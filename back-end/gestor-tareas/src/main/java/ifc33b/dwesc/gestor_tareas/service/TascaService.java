@@ -26,8 +26,8 @@ public class TascaService {
     }
 
     // Crear tarea
-    // public String createTasca(Tasca request) {
-    //     Tasca tasca = new Tasca(request.getTitol(), request.getDescripcio());
-    //     Tasca savedTasca = tascaRepository.save(tasca);
-    // }
+    public Tasca createTasca(String titol, String descripcio) {
+        Tasca savedTasca = tascaRepository.save(new Tasca(titol ,descripcio));
+        return savedTasca;
+    }
 }

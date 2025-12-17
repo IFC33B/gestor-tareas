@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +33,10 @@ public class HomeController {
     }
 
     @PostMapping("/tasques") // Crear tarea
-    public String postApiTasques() {
-        return null;
+    public Tasca postApiTasques(@RequestBody Tasca request) {
+        System.out.println("DEBUG: " + request);
+        Tasca tasca = tascaService.createTasca(request.getTitol(), request.getDescripcio());
+        return tasca;
     }
 
     @PutMapping("/tasques/{id}") // Editar tarea (Estado, titulo...)
