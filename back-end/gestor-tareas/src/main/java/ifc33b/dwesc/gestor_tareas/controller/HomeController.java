@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ifc33b.dwesc.gestor_tareas.service.TascaService;
+import ifc33b.dwesc.gestor_tareas.dto.TascaRequest;
+import ifc33b.dwesc.gestor_tareas.dto.TascaResponse;
 import ifc33b.dwesc.gestor_tareas.model.Tasca;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -29,12 +32,13 @@ public class HomeController {
     }
     
     @PostMapping
-    public int postApiTasca() {
-        return 0;
+    public TascaResponse afegirTasca(@RequestBody TascaRequest tascaRequest) {
+        TascaResponse tascaResponse = tascaService.afegirTasca(tascaRequest.getTitol(), tascaRequest.getDescripcio());
+        return tascaResponse;
     }
     
     @PutMapping("/{id}")
-    public int putApiTasca() {   
+    public int putApiTasca() {
         return 0;
     }
 
