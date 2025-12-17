@@ -13,22 +13,22 @@ public class HomeController {
 
     @GetMapping
     public String inicio() {
-        return "Benvingut al gestor de tasques";
+        return "";
     }
 
     @PostMapping
     public String afegirTasques() {
-        return "Tasques afegides correctament";
+        return "";
     }
 
     @PutMapping("/{id}")
     public String actualitzarTasques() {
-        return "Tasques actualitzades correctament";
+        return "";
     }
 
     @DeleteMapping("/{id}")
     public String eliminarTasques() {
-        return "Tasques eliminades correctament";
+        return "";
     }
 
 }
