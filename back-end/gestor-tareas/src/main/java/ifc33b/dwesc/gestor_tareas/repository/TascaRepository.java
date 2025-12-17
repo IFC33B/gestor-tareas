@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import ifc33b.dwesc.gestor_tareas.model.Tasca;
 
 @Repository
+// @Autowired
 public interface TascaRepository extends JpaRepository<Tasca, Long> {
 
 }
