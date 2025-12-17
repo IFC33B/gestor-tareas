@@ -1,0 +1,48 @@
+package ifc33b.dwesc.gestor_tareas.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "tasques")
+public class Tasca {
+
+    // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    private Long id;
+
+    @NotBlank(message = "Es requereix un titol.")
+    @Column(nullable = false)
+    @Getter
+    @Setter
+    private String titol;
+
+    @NotBlank(message = "Es requereix una descripcio de la tasca.")
+    @Column(nullable = false)
+    @Getter
+    @Setter
+    private String descripcio;
+
+    @Column(nullable = false)
+    @Getter
+    @Setter
+    private boolean feta;
+
+    // Constructor
+    public Tasca(String titol, String descripcio) {
+        this.titol = titol;
+        this.descripcio = descripcio;
+
+        this.feta = false;
+    }
+
+}
