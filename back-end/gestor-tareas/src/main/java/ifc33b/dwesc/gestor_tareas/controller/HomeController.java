@@ -3,6 +3,8 @@ package ifc33b.dwesc.gestor_tareas.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ifc33b.dwesc.gestor_tareas.dto.TascaRequest;
+import ifc33b.dwesc.gestor_tareas.dto.TascaResponse;
 import ifc33b.dwesc.gestor_tareas.model.Tasca;
 import ifc33b.dwesc.gestor_tareas.service.TascaService;
 
@@ -33,10 +37,9 @@ public class HomeController {
     }
 
     @PostMapping("/tasques") // Crear tarea
-    public Tasca postApiTasques(@RequestBody Tasca request) {
-        System.out.println("DEBUG: " + request);
-        Tasca tasca = tascaService.createTasca(request.getTitol(), request.getDescripcio());
-        return tasca;
+    public ResponseEntity<TascaResponse> postApiTasques(@RequestBody TascaRequest tascaRequest) {
+        TascaResponse tascaResponse = tascaService.createTasca(tascaRequest);
+        return new ResponseEntity<>(tascaResponse, HttpStatus.CREATED);
     }
 
     @PutMapping("/tasques/{id}") // Editar tarea (Estado, titulo...)

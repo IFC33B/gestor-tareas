@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ifc33b.dwesc.gestor_tareas.dto.TascaRequest;
+import ifc33b.dwesc.gestor_tareas.dto.TascaResponse;
 import ifc33b.dwesc.gestor_tareas.model.Tasca;
 import ifc33b.dwesc.gestor_tareas.repository.TascaRepository;
 import jakarta.transaction.Transactional;
@@ -26,8 +28,9 @@ public class TascaService {
     }
 
     // Crear tarea
-    public Tasca createTasca(String titol, String descripcio) {
-        Tasca savedTasca = tascaRepository.save(new Tasca(titol ,descripcio));
-        return savedTasca;
+    public TascaResponse createTasca(TascaRequest request) {
+        Tasca tasca = new Tasca(request.getTitol(), request.getDescripcio());
+        Tasca savedTasca = tascaRepository.save(tasca);
+        return new TascaResponse(savedTasca);
     }
 }

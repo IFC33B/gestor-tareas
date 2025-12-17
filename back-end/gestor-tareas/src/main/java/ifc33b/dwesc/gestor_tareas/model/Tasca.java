@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Data
@@ -28,6 +30,8 @@ public class Tasca {
     private String descripcio;
 
     @Column(nullable = false)
+    @Getter
+    @Setter
     private boolean feta;
 
     // Constructor
