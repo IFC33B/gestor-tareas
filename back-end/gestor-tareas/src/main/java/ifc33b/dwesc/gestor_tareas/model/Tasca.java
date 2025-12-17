@@ -7,34 +7,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "tasques")
 public class Tasca {
 
     // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
     private Long id;
 
     @NotBlank(message = "Es requereix un titol de la tasca.")
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String titol;
 
     @NotBlank(message = "Es requereix una descripció de la tasca.")
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String descripcio;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private boolean feta;
 
     // Constructor
