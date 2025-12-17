@@ -33,7 +33,7 @@ public class HomeController {
     
     @PostMapping
     public TascaResponse afegirTasca(@RequestBody TascaRequest tascaRequest) {
-        TascaResponse tascaResponse = tascaService.afegirTasca(tascaRequest.getTitol(), tascaRequest.getDescripcio());
+        TascaResponse tascaResponse = tascaService.afegirTasca(tascaRequest);
         return tascaResponse;
     }
     

@@ -5,14 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ifc33b.dwesc.gestor_tareas.dto.TascaRequest;
 import ifc33b.dwesc.gestor_tareas.dto.TascaResponse;
 import ifc33b.dwesc.gestor_tareas.model.Tasca;
 
 import ifc33b.dwesc.gestor_tareas.repository.TascaRepository;
-import jakarta.transaction.Transactional;
 
 @Service
-@Transactional
 public class TascaService {
     @Autowired
     private final TascaRepository tascaRepository;
@@ -25,9 +24,9 @@ public class TascaService {
         return tascaRepository.findAll();
     }
 
-    public TascaResponse afegirTasca(String titol, String descripcio) {
-        Tasca savedTasca = tascaRepository.save(new Tasca(titol, descripcio));
-        TascaResponse tascaResponse = new TascaResponse(savedTasca.getTitol(), savedTasca.getDescripcio());
+    public TascaResponse afegirTasca(TascaRequest tascaRequest) {
+        Tasca savedTasca = tascaRepository.save(new Tasca(tascaRequest.getTitol(), tascaRequest.getDescripcio()));
+        TascaResponse tascaResponse = new TascaResponse(savedTasca.getId(), savedTasca.getTitol(), savedTasca.getDescripcio(), savedTasca.isFeta());
         return tascaResponse;
     }
 }

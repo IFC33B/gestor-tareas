@@ -5,14 +5,15 @@ import lombok.Data;
 
 @Data
 public class TascaResponse {
-    @NotBlank(message = "Requereix un títol")
+    private Long id;
     private String titol;
-
-    @NotBlank(message = "Requereix una descripció")
     private String descripcio;
+    private boolean feta;
 
-    public TascaResponse(String titol, String descripcio) {
+    public TascaResponse(Long id, String titol, String descripcio, boolean feta) {
+        this.setId(id);
         this.setTitol(titol);
         this.setDescripcio(descripcio);
+        this.setFeta(feta);
     }
 }
