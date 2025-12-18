@@ -65,8 +65,17 @@ public class HomeController {
     }
 
     @DeleteMapping("/tasques/{id}") // Elimina una tarea
-    public String deleteApiTasques() {
-        return null;
+    public ResponseEntity<TascaResponse> deleteApiTasques(@PathVariable Long id) {
+        // Service Logic
+        Boolean deleted = tascaService.deleteTasca(id);
+
+        // Http Response
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 
 }

@@ -45,4 +45,14 @@ public class TascaService {
         Tasca savedTasca = tascaRepository.save(searchedTasca);
         return new TascaResponse(savedTasca);
     }
+
+    // Borrar tarea
+    public Boolean deleteTasca(Long id) {
+        if (tascaRepository.existsById(id)) {
+            tascaRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
