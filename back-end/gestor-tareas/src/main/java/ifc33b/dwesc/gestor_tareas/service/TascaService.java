@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import ifc33b.dwesc.gestor_tareas.dto.TascaRequest;
 import ifc33b.dwesc.gestor_tareas.dto.TascaResponse;
+import ifc33b.dwesc.gestor_tareas.exception.TascaNotFoundException;
 import ifc33b.dwesc.gestor_tareas.model.Tasca;
 import ifc33b.dwesc.gestor_tareas.repository.TascaRepository;
 import jakarta.transaction.Transactional;
@@ -37,7 +38,7 @@ public class TascaService {
 
     // Actualizar tarea
     public TascaResponse updateTasca(Long id, TascaRequest request) {
-        Tasca searchedTasca = tascaRepository.findById(id).orElseThrow(() -> new RuntimeException("No found tasca with id " + id));
+        Tasca searchedTasca = tascaRepository.findById(id).orElseThrow(() -> new TascaNotFoundException(id));
         searchedTasca.setTitol(request.getTitol());
         searchedTasca.setDescripcio(request.getDescripcio());
         searchedTasca.setFeta(request.isFeta());
