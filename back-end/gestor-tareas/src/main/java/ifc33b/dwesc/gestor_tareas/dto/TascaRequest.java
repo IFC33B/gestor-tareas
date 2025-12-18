@@ -22,5 +22,6 @@ public class TascaRequest {
     public TascaRequest(String titol, String descripcio, boolean feta) {
         this.titol = titol;
         this.descripcio = descripcio;
+        this.feta = feta;
     }
 }
