@@ -11,6 +11,11 @@ public class TascaResponse {
     private String descripcio;
     private boolean feta;
 
+    // Default Constructor
+    public TascaResponse() {
+    }
+
+    // Constructor
     public TascaResponse(Tasca tasca) {
         this.id = tasca.getId();
         this.titol = tasca.getTitol();
