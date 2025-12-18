@@ -19,8 +19,88 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# virtual machine crash logs, see http:/www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
 
 .vscode
+
+# Frontend
+
+# Compiled output
+/front-end/gestor-tareas/dist
+/front-end/gestor-tareas/tmp
+/front-end/gestor-tareas/out-tsc
+/front-end/gestor-tareas/bazel-out
+
+# Node
+/front-end/gestor-tareas/node_modules
+/front-end/gestor-tareas/npm-debug.log
+/front-end/gestor-tareas/yarn-error.log
+
+# IDEs and editors
+/front-end/gestor-tareas/.idea/
+/front-end/gestor-tareas/.project
+/front-end/gestor-tareas/.classpath
+/front-end/gestor-tareas/.c9/
+/front-end/gestor-tareas/*.launch
+/front-end/gestor-tareas/.settings/
+/front-end/gestor-tareas/*.sublime-workspace
+
+# Visual Studio Code
+/front-end/gestor-tareas/.vscode/*
+/front-end/gestor-tareas/!.vscode/settings.json
+/front-end/gestor-tareas/!.vscode/tasks.json
+/front-end/gestor-tareas/!.vscode/launch.json
+/front-end/gestor-tareas/!.vscode/extensions.json
+/front-end/gestor-tareas/.history/*
+
+# Miscellaneous
+/front-end/gestor-tareas/.angular/cache
+/front-end/gestor-tareas/.sass-cache/
+/front-end/gestor-tareas/connect.lock
+/front-end/gestor-tareas/coverage
+/front-end/gestor-tareas/libpeerconnection.log
+/front-end/gestor-tareas/testem.log
+/front-end/gestor-tareas/typings
+/front-end/gestor-tareas/__screenshots__/
+
+# System files
+/front-end/gestor-tareas/.DS_Store
+/front-end/gestor-tareas/Thumbs.db
+
+# Backend
+
+/back-end/gestor-tareas/HELP.md
+/back-end/gestor-tareas/target/
+/back-end/gestor-tareas/.mvn/wrapper/maven-wrapper.jar
+/back-end/gestor-tareas/!**/src/main/**/target/
+/back-end/gestor-tareas/!**/src/test/**/target/
+
+### STS ###
+/back-end/gestor-tareas/.apt_generated
+/back-end/gestor-tareas/.classpath
+/back-end/gestor-tareas/.factorypath
+/back-end/gestor-tareas/.project
+/back-end/gestor-tareas/.settings
+/back-end/gestor-tareas/.springBeans
+/back-end/gestor-tareas/.sts4-cache
+
+### IntelliJ IDEA ###
+/back-end/gestor-tareas/.idea
+/back-end/gestor-tareas/*.iws
+/back-end/gestor-tareas/*.iml
+/back-end/gestor-tareas/*.ipr
+
+### NetBeans ###
+/back-end/gestor-tareas/nbproject/private/
+/back-end/gestor-tareas/nbbuild/
+/back-end/gestor-tareas/dist/
+/back-end/gestor-tareas/nbdist/
+/back-end/gestor-tareas/.nb-gradle/
+/back-end/gestor-tareas/build/
+/back-end/gestor-tareas/!**/src/main/**/build/
+/back-end/gestor-tareas/!**/src/test/**/build/
+
+### VS Code ###
+/back-end/gestor-tareas/.vscode/
