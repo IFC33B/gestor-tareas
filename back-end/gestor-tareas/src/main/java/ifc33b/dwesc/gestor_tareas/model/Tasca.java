@@ -34,6 +34,10 @@ public class Tasca {
     @Setter
     private boolean feta;
 
+    // Default Constructor
+    public Tasca() {
+    }
+
     // Constructor
     public Tasca(String titol, String descripcio) {
         this.titol = titol;
