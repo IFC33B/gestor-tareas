@@ -47,4 +47,13 @@ public class TascaService {
         Tasca updatedTasca = tascaRepository.save(tasca);
         return new TascaResponse(updatedTasca);
     }
+
+    // Eliminar tasca
+    public void deleteTasca(Long id) {
+        if (!tascaRepository.existsById(id)) {
+            throw new RuntimeException("No se ha encontrado la tasca con la id " + id);
+        }
+        
+        tascaRepository.deleteById(id);
+    }
 }

@@ -55,7 +55,11 @@ public class HomeController {
     }
 
     @DeleteMapping("/{id}")
-    public int deleteApiTasca() {
-        return 0;
+    public ResponseEntity<Void> deleteTasca(@PathVariable Long id) {
+        // Servicio
+        tascaService.deleteTasca(id);
+
+        // HTTP response
+        return ResponseEntity.noContent().build();
     }
 }
