@@ -34,4 +34,17 @@ public class TascaService {
         tascaRepository.save(tasca);
         return new TascaResponse(tasca);
     }
+
+    // Actualizar tasca
+    public TascaResponse updateTasca(TascaRequest tascaRequest, Long id) {
+        Tasca tasca = tascaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se ha encontrado la tasca con la id " + id));
+
+        tasca.setTitol(tascaRequest.getTitol());
+        tasca.setDescripcio(tascaRequest.getDescripcio());
+        tasca.setFeta(tascaRequest.isFeta());
+
+        Tasca updatedTasca = tascaRepository.save(tasca);
+        return new TascaResponse(updatedTasca);
+    }
 }

@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,9 +44,14 @@ public class HomeController {
         return new ResponseEntity<>(tascaResponse, HttpStatus.CREATED);
     }
     
+    // Actualizar tasca
     @PutMapping("/{id}")
-    public int putApiTasca() {
-        return 0;
+    public ResponseEntity<TascaResponse> updateTasca(@RequestBody TascaRequest tascaRequest, @PathVariable Long id) {
+        // Servicio
+        TascaResponse tascaResponse = tascaService.updateTasca(tascaRequest, id);
+
+        // HTTP response
+        return ResponseEntity.ok(tascaResponse);
     }
 
     @DeleteMapping("/{id}")

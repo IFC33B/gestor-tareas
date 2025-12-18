@@ -11,8 +11,11 @@ public class TascaRequest {
     @NotBlank(message = "Requereix una descripció")
     private String descripcio;
 
-    public TascaRequest(String titol, String descripcio) {
+    private boolean feta;
+
+    public TascaRequest(String titol, String descripcio, boolean feta) {
         this.setTitol(titol);
         this.setDescripcio(descripcio);
+        this.setFeta(feta);
     }
 }
