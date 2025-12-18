@@ -29,6 +29,8 @@ public class Tasca {
     @Column(nullable = false)
     private boolean feta;
 
+    public Tasca(){}
+
     public Tasca(String titol, String descripcio) {
         this.setTitol(titol);
         this.setDescripcio(descripcio);

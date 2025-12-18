@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ifc33b.dwesc.gestor_tareas.service.TascaService;
 import ifc33b.dwesc.gestor_tareas.dto.TascaRequest;
 import ifc33b.dwesc.gestor_tareas.dto.TascaResponse;
-import ifc33b.dwesc.gestor_tareas.model.Tasca;
 
 import java.util.List;
 
