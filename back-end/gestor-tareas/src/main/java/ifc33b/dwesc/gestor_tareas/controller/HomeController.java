@@ -33,13 +33,24 @@ public class HomeController {
     }
 
     @GetMapping("/tasques") // Devolver todas las tareas
-    public List<TascaResponse> getApiTasques() {
-        return tascaService.getAllTasques();
+    public ResponseEntity<List<TascaResponse>> getApiTasques() {
+        // Service Logic
+        List<TascaResponse> tasques = tascaService.getAllTasques();
+
+        // Http Response
+        if (tasques.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(tasques, HttpStatus.OK);
+        }
     }
 
     @PostMapping("/tasques") // Crear tarea
     public ResponseEntity<TascaResponse> postApiTasques(@RequestBody TascaRequest tascaRequest) {
+        // Service Logic
         TascaResponse tascaResponse = tascaService.createTasca(tascaRequest);
+
+        // Http Response
         return new ResponseEntity<>(tascaResponse, HttpStatus.CREATED);
     }
 
