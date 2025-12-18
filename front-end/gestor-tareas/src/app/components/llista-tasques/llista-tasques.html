@@ -1,1 +1,36 @@
-<p>llista-tasques works!</p>
+<div class="container my-5">
+    <h2 class="text-center mb-4">Tareas</h2>
+
+    @if (carregant()) {
+    <section class="row pt-5">
+        <div class="spinner-border mx-auto" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </section>
+    }
+
+    @if (error()) {
+    <section class="error">
+        <p>{{ error() }}</p>
+        <button (click)="carregarTasques()">Volver a provar</button>
+    </section>
+    }
+
+    @if (!carregant() && !error()) {
+    <section class="row">
+        @for (tasca of tasques(); track tasca.id) {
+        <div class="col-12 pb-4">
+            <div class="card shadow-sm border-0 rounded-4 p-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tasca.titol }}</h5>
+                    <p class="card-text">{{ tasca.descripcio }}</p>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <small class="text-muted">ID #{{ tasca.id }}</small>
+                </div>
+            </div>
+        </div>
+        }
+    </section>
+    }
+</div>
