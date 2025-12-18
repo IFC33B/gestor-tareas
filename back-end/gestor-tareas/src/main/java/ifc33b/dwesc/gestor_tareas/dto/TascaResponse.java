@@ -1,6 +1,6 @@
 package ifc33b.dwesc.gestor_tareas.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import ifc33b.dwesc.gestor_tareas.model.Tasca;
 import lombok.Data;
 
 @Data
@@ -10,10 +10,10 @@ public class TascaResponse {
     private String descripcio;
     private boolean feta;
 
-    public TascaResponse(Long id, String titol, String descripcio, boolean feta) {
-        this.setId(id);
-        this.setTitol(titol);
-        this.setDescripcio(descripcio);
-        this.setFeta(feta);
+    public TascaResponse(Tasca tasca) {
+        this.setId(tasca.getId());
+        this.setTitol(tasca.getTitol());
+        this.setDescripcio(tasca.getDescripcio());
+        this.setFeta(tasca.isFeta());
     }
 }

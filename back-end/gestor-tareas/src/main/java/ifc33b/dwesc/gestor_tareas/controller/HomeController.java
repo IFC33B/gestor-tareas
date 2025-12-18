@@ -11,6 +11,8 @@ import ifc33b.dwesc.gestor_tareas.model.Tasca;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,15 +28,19 @@ public class HomeController {
     @Autowired
     private TascaService tascaService;
 
-    @GetMapping
-    public List<Tasca> llistarTasques() {
-        return tascaService.llistarTasques();
+    @GetMapping // Devolver todas las tareas
+    public ResponseEntity<List<TascaResponse>> getAllTasques() {
+        List<TascaResponse> tasques = tascaService.getAllTasques();
+        return ResponseEntity.ok(tasques);
     }
     
-    @PostMapping
-    public TascaResponse afegirTasca(@RequestBody TascaRequest tascaRequest) {
-        TascaResponse tascaResponse = tascaService.afegirTasca(tascaRequest);
-        return tascaResponse;
+    @PostMapping // Crear tarea
+    public ResponseEntity<TascaResponse> createTasca(@RequestBody TascaRequest tascaRequest) {
+        // Servicio
+        TascaResponse tascaResponse = tascaService.createTasca(tascaRequest);
+
+        // HTTP response
+        return new ResponseEntity<>(tascaResponse, HttpStatus.CREATED);
     }
     
     @PutMapping("/{id}")

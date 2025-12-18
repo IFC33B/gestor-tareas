@@ -1,6 +1,7 @@
 package ifc33b.dwesc.gestor_tareas.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +21,17 @@ public class TascaService {
         this.tascaRepository = tascaRepository;
     }
 
-    public List<Tasca> llistarTasques() {
-        return tascaRepository.findAll();
+    // Listar todas las tareas
+    public List<TascaResponse> getAllTasques() {
+        return tascaRepository.findAll().stream()
+                .map(TascaResponse::new)
+                .collect(Collectors.toList());
     }
 
-    public TascaResponse afegirTasca(TascaRequest tascaRequest) {
-        Tasca savedTasca = tascaRepository.save(new Tasca(tascaRequest.getTitol(), tascaRequest.getDescripcio()));
-        TascaResponse tascaResponse = new TascaResponse(savedTasca.getId(), savedTasca.getTitol(), savedTasca.getDescripcio(), savedTasca.isFeta());
-        return tascaResponse;
+    // Crear tarea
+    public TascaResponse createTasca(TascaRequest tascaRequest) {
+        Tasca tasca = new Tasca(tascaRequest.getTitol(), tascaRequest.getDescripcio());
+        tascaRepository.save(tasca);
+        return new TascaResponse(tasca);
     }
 }

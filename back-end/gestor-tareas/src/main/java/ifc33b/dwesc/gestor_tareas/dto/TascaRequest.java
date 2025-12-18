@@ -2,7 +2,6 @@ package ifc33b.dwesc.gestor_tareas.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-import lombok.Getter;
 
 @Data
 public class TascaRequest {
