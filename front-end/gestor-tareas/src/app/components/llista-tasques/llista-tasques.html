@@ -24,6 +24,16 @@
     <!-- Lista de tareas -->
     @if (!carregant() && !error()) {
     <section class="row g-4">
+        @if (tasques().length == 0) {
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="text-center text-info-emphasis">No hay actividades. Por favor, agrega alguna en el formulario!</h1>
+                    </div>
+                </div>
+            </div>
+        }
+
         @for (tasca of tasques(); track tasca.id) {
         <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="card task-card h-100 border-0 rounded-4 shadow-sm">

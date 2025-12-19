@@ -3,7 +3,7 @@ import { LlistaTasques } from './components/llista-tasques/llista-tasques';
 import { FormulariTasques } from './components/formulari-tasques/formulari-tasques';
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/formulari', pathMatch: 'full'},
+    {path: '', redirectTo: '/tasques', pathMatch: 'full'},
     {path: 'tasques', component: LlistaTasques},
     {path: 'formulari', component: FormulariTasques}
 ];
