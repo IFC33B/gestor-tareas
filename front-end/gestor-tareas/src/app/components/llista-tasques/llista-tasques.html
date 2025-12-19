@@ -1,0 +1,78 @@
+<div class="container my-5">
+    <h1 class="text-center mb-5 text-info fw-bolder display-6">
+        📋 Tareas
+    </h1>
+
+    <!-- Cargando -->
+    @if (carregant()) {
+    <section class="d-flex flex-column align-items-center py-5">
+        <div class="spinner-border text-info mb-3" role="status"></div>
+        <span class="text-muted">Cargando tareas...</span>
+    </section>
+    }
+
+    <!-- Error -->
+    @if (error()) {
+    <section class="alert alert-danger text-center shadow-sm rounded-4">
+        <p class="mb-3 fw-semibold">{{ error() }}</p>
+        <button class="btn btn-outline-danger" (click)="carregarTasques()">
+            Volver a intentar
+        </button>
+    </section>
+    }
+
+    <!-- Lista de tareas -->
+    @if (!carregant() && !error()) {
+    <section class="row g-4">
+        @if (tasques().length == 0) {
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="text-center text-info-emphasis">No hay actividades. Por favor, agrega alguna en el formulario!</h1>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @for (tasca of tasques(); track tasca.id) {
+        <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="card task-card h-100 border-0 rounded-4 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between">
+                        <span class="badge bg-info-subtle text-info align-self-center text-black">
+                            @if (tasca.feta) {
+                            Completada
+                            } @else {
+                            Sin Completar
+                            }
+                        </span>
+    
+                        <span class="badge bg-info-subtle text-info align-self-center text-black">
+                            ID #{{ tasca.id }}
+                        </span>
+                    </div>
+
+                    <h5 class="card-title text-info fw-bold text-center my-4">
+                        {{ tasca.titol }}
+                    </h5>
+
+                    <p class="card-text text-light flex-grow-1">
+                        {{ tasca.descripcio }}
+                    </p>
+
+                    <div class="form-check mt-3 text-light">
+                        <input class="form-check-input" type="checkbox" id="checkDefault" [checked]="tasca.feta"
+                            (change)="completarTasca(tasca, $event.target.checked)">
+                        <label class="form-check-label" for="checkDefault">
+                            Marcar como completada
+                        </label>
+                    </div>
+
+                    <button class="btn btn-primary bg-danger border-danger text-black mt-3 w-50 mx-auto" (click)="eliminarTasca(tasca)">Eliminar</button>
+                </div>
+            </div>
+        </div>
+        }
+    </section>
+    }
+</div>
