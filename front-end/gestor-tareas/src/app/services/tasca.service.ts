@@ -9,7 +9,7 @@ import { Tasca } from '../models';
 export class TascaService {
   private apiURL = 'http://localhost:8080/api/tasques';
 
-  constructor(private http: HttpClient){};
+  constructor(private http: HttpClient) {};
 
   // Obtener todas las tasques
   getAllTasques(): Observable<Tasca[]> {
@@ -19,19 +19,27 @@ export class TascaService {
       )
   }
 
+  // Modificar tascas
+  updateTasca(tasca: Tasca, id: number): Observable<Tasca> {
+    return this.http.put<Tasca>(this.apiURL, tasca)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
   // Gestión de errores
-    private handleError(error: HttpErrorResponse) {
-      let errorMessage = 'Error desconocido';
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Error desconocido';
 
-      if (error.error instanceof ErrorEvent) {
-        // Error del cliente
-        errorMessage = `Error: ${error.error.message}`
-      } else {
-        // Error del servidor
-        errorMessage = `Codigo de error: ${error.status}, Mensaje: ${error.message}`;
-      }
-
-      console.log(errorMessage);
-      return throwError(() => Error(errorMessage))
+    if (error.error instanceof ErrorEvent) {
+      // Error del cliente
+      errorMessage = `Error: ${error.error.message}`
+    } else {
+      // Error del servidor
+      errorMessage = `Codigo de error: ${error.status}, Mensaje: ${error.message}`;
     }
+
+    console.log(errorMessage);
+    return throwError(() => Error(errorMessage))
+  }
 }
