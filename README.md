@@ -6,7 +6,31 @@ Aplicación para gestionar tareas con backend en Spring Boot y frontend en Angul
 
 - Java 21
 - Maven
-- Node.js (para el frontend)
+- Node.js 18+ (para el frontend)
+- npm
+
+## Estructura de Carpetas
+
+### Backend (Spring Boot)
+- `back-end/gestor-tareas/` - Aplicación Spring Boot
+  - `src/main/java/ifc33b/dwesc/gestor_tareas/` - Código fuente Java
+    - `controller` - Controladores
+    - `dto` - Modelos de transferencia entre front y back
+    - `model` - Modelos Java
+    - `repository` - JPA
+    - `service` - Lógica de negocio
+  - `src/main/resources/` - Recursos de la aplicación
+  - `src/test/` - Tests unitarios
+  - `pom.xml` - Dependencias Maven
+
+### Frontend (Angular)
+- `front-end/gestor-tareas/` - Aplicación Angular
+  - `src/app/` - Código Angular
+    - `components/` - Componentes reutilizables
+    - `models/` - Modelos TypeScript
+    - `services/` - Servicios (comunicación con backend)
+  - `src/` - Assets y configuración
+  - `package.json` - Dependencias npm
 
 ## Instalación
 
@@ -26,11 +50,39 @@ El servidor estará disponible en `http://localhost:8080`
 
 ### Frontend
 
+1. Acceder a la carpeta del frontend:
 ```bash
-cd front-end
+cd front-end/gestor-tareas
+```
+
+2. Instalar dependencias:
+```bash
 npm install
+```
+
+3. Ejecutar servidor de desarrollo:
+```bash
 npm start
 ```
+
+La aplicación estará disponible en `http://localhost:4200`
+
+## Desarrollo
+
+### Backend
+
+El backend está construido con:
+- **Spring Boot 3.x** - Framework web
+- **Spring Data JPA** - Acceso a datos
+- **Maven** - Gestor de dependencias
+
+### Frontend
+
+El frontend está construido con:
+- **Angular 18+** - Framework de desarrollo
+- **TypeScript** - Lenguaje de programación
+- **SCSS** - Estilos
+- **npm** - Gestor de dependencias
 
 ## Endpoints API
 
@@ -170,20 +222,67 @@ curl -X DELETE "http://localhost:8080/api/tasques/1"
 
 ```
 gestor-tareas/
+├── README.md
 ├── back-end/
-│   └── gestor-tareas/          (Backend Spring Boot)
+│   └── gestor-tareas/
+│       ├── mvnw
+│       ├── mvnw.cmd
+│       ├── pom.xml
 │       ├── src/
 │       │   ├── main/
-│       │   │   ├── java/
-│       │   │   │   └── ifc33b/dwesc/gestor_tareas/
-│       │   │   │       ├── controller/        (Controladores REST)
-│       │   │   │       ├── service/           (Servicios)
-│       │   │   │       ├── model/             (Modelos)
-│       │   │   │       ├── dto/               (Data Transfer Objects)
-│       │   │   │       └── repository/        (Acceso a datos)
+│       │   │   ├── java/ifc33b/dwesc/gestor_tareas/
+│       │   │   │   ├── GestorTareasApplication.java
+│       │   │   │   ├── controller/
+│       │   │   │   │   └── HomeController.java
+│       │   │   │   ├── dto/
+│       │   │   │   │   ├── TascaRequest.java
+│       │   │   │   │   └── TascaResponse.java
+│       │   │   │   ├── model/
+│       │   │   │   │   └── Tasca.java
+│       │   │   │   ├── repository/
+│       │   │   │   └── service/
 │       │   │   └── resources/
 │       │   │       └── application.properties
 │       │   └── test/
-│       └── pom.xml
-└── front-end/                   (Frontend)
+│       │       └── java/ifc33b/dwesc/gestor_tareas/
+│       │           └── GestorTareasApplicationTests.java
+│       └── target/ (generado por Maven)
+└── front-end/
+    └── gestor-tareas/
+        ├── angular.json
+        ├── package.json
+        ├── tsconfig.json
+        ├── tsconfig.app.json
+        ├── tsconfig.spec.json
+        ├── README.md
+        ├── public/
+        ├── src/
+        │   ├── index.html
+        │   ├── main.ts
+        │   ├── styles.scss
+        │   └── app/
+        │       ├── app.config.ts
+        │       ├── app.html
+        │       ├── app.routes.ts
+        │       ├── app.scss
+        │       ├── app.ts
+        │       ├── app.spec.ts
+        │       ├── components/
+        │       │   ├── formulari-tasques/
+        │       │   │   ├── formulari-tasques.html
+        │       │   │   ├── formulari-tasques.scss
+        │       │   │   ├── formulari-tasques.ts
+        │       │   │   └── formulari-tasques.spec.ts
+        │       │   └── llista-tasques/
+        │       │       ├── llista-tasques.html
+        │       │       ├── llista-tasques.scss
+        │       │       ├── llista-tasques.ts
+        │       │       └── llista-tasques.spec.ts
+        │       ├── models/
+        │       │   ├── index.ts
+        │       │   ├── tasca.model.ts
+        │       │   └── tasca.model.spec.ts
+        │       └── services/
+        │           ├── tasca.service.ts
+        │           └── tasca.service.spec.ts
 ```
