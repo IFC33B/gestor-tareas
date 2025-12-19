@@ -24,6 +24,7 @@ export class LlistaTasques {
     this.carregant.set(true);
     this.error.set(null);
 
+    // Servicio
     this.tascaService.getAllTasques().subscribe({
       next: (dades) => {
         this.tasques.set(dades);
@@ -39,9 +40,17 @@ export class LlistaTasques {
   }
 
   // Marcar tasques como completadas
-  completarTasca(tasca: Tasca): void {
+  completarTasca(tasca: Tasca, checked: boolean): void {
     this.error.set(null);
 
+    // Marcamos como completado si el check está marcado
+    if (checked) {
+      tasca.feta = true;
+    } else {
+      tasca.feta = false;
+    }
+
+    // Servicio
     this.tascaService.updateTasca(tasca).subscribe({
       next: (dades) => {
         this.tasques.update(llista =>
