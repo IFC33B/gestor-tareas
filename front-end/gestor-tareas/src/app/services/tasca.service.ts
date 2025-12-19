@@ -27,6 +27,14 @@ export class TascaService {
       )
   }
 
+  // Eliminar tasca
+  deleteTasca(tasca: Tasca): void {
+    this.http.delete(`${this.apiURL}/${tasca.id}`)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
   // Gestión de errores
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Error desconocido';
