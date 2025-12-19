@@ -19,6 +19,11 @@ export class TascaService {
       )
   }
 
+  // Añadir una tarea
+  createTarea(tasca: Tasca): Observable<Tasca> {
+    return this.http.post<Tasca>(this.apiURL, tasca)
+  }
+
   // Modificar tascas
   updateTasca(tasca: Tasca): Observable<Tasca> {
     return this.http.put<Tasca>(`${this.apiURL}/${tasca.id}`, tasca)
