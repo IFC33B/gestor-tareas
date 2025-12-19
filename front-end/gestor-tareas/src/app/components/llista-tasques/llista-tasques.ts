@@ -68,4 +68,20 @@ export class LlistaTasques {
       }
     })
   }
+
+
+  // Eliminar tarea
+  eliminarTasca(tasca: Tasca): void {
+    this.error.set(null);
+
+    this.tascaService.deleteTasca(tasca).subscribe(
+      () => {
+        this.tasques.update(llista => llista.filter(t => t.id !== tasca.id));
+      },
+      (err) => {
+        this.error.set('Error al elimnar la tarea');
+        console.error(err);
+      }
+    );
+  }
 }

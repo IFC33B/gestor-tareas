@@ -28,8 +28,8 @@ export class TascaService {
   }
 
   // Eliminar tasca
-  deleteTasca(tasca: Tasca): void {
-    this.http.delete(`${this.apiURL}/${tasca.id}`)
+  deleteTasca(tasca: Tasca): Observable<void> {
+    return this.http.delete<void>(`${this.apiURL}/${tasca.id}`)
       .pipe(
         catchError(this.handleError)
       )
