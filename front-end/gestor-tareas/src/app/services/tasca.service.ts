@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Tasca } from '../models';
+import { Tasca, TascaRequest } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +20,8 @@ export class TascaService {
   }
 
   // Añadir una tarea
-  createTarea(tasca: Tasca): Observable<Tasca> {
-    return this.http.post<Tasca>(this.apiURL, tasca)
+  createTarea(tascaRequest: TascaRequest): Observable<Tasca> {
+    return this.http.post<Tasca>(this.apiURL, tascaRequest)
   }
 
   // Modificar tascas
