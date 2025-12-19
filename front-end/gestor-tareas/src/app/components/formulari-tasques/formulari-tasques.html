@@ -1,1 +1,41 @@
-<p>formulari-tasques works!</p>
+<div>
+    <h2 class="text-center mb-4">Formulario para añadir una tarea</h2>
+
+    <!-- Indicador de carga -->
+    @if (carregant()) {
+    <section class="d-flex flex-column align-items-center py-5">
+        <div class="spinner-border text-info mb-3" role="status"></div>
+        <span class="text-muted">Creando tarea...</span>
+    </section>
+    }
+
+    <!-- Mensaje de error -->
+    @if (error()) {
+    <section class="alert alert-danger text-center shadow-sm rounded-4">
+        <p class="mb-3 fw-semibold">{{ error() }}</p>
+        <button class="btn btn-outline-danger" (click)="reload()">
+            Volver a intentar
+        </button>
+    </section>
+    }
+
+    @if (!carregant() && !error()) {
+    <section class="container my-4">
+        <h3 class="mb-3">Añadir tarea</h3>
+
+        <form (submit)="crearTasca()">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" id="titulo" class="form-control" [(ngModel)]="titol" name="titol" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="contenido" class="form-label">Descripción</label>
+                <textarea id="contenido" class="form-control" rows="4" [(ngModel)]="descripcio" name="descripcio" required> </textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Añadir tarea</button>
+        </form>
+    </section>
+    }
+</div>
