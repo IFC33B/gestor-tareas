@@ -21,7 +21,7 @@ export class TascaService {
 
   // Modificar tascas
   updateTasca(tasca: Tasca): Observable<Tasca> {
-    return this.http.put<Tasca>(this.apiURL, tasca)
+    return this.http.put<Tasca>(`${this.apiURL}/${tasca.id}`, tasca)
       .pipe(
         catchError(this.handleError)
       )
