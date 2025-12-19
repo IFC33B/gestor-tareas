@@ -1,41 +1,70 @@
-<div>
-    <h2 class="text-center mb-4">Formulario para añadir una tarea</h2>
+<div class="py-5">
+  <h2 class="text-center mb-5 text-info fw-bolder display-6">
+    📝 Formulario para añadir una tarea
+  </h2>
 
-    <!-- Indicador de carga -->
-    @if (carregant()) {
+  <!-- Indicador de carga -->
+  @if (carregant()) {
     <section class="d-flex flex-column align-items-center py-5">
-        <div class="spinner-border text-info mb-3" role="status"></div>
-        <span class="text-muted">Creando tarea...</span>
+      <div class="spinner-border text-info mb-3" role="status"></div>
+      <span class="text-secondary">Creando tarea...</span>
     </section>
-    }
+  }
 
-    <!-- Mensaje de error -->
-    @if (error()) {
+  <!-- Mensaje de error -->
+  @if (error()) {
     <section class="alert alert-danger text-center shadow-sm rounded-4">
-        <p class="mb-3 fw-semibold">{{ error() }}</p>
-        <button class="btn btn-outline-danger" (click)="reload()">
-            Volver a intentar
-        </button>
+      <p class="mb-3 fw-semibold">{{ error() }}</p>
+      <button class="btn btn-outline-danger" (click)="reload()">
+        Volver a intentar
+      </button>
     </section>
-    }
+  }
 
-    @if (!carregant() && !error()) {
-    <section class="container my-4">
-        <h3 class="mb-3">Añadir tarea</h3>
+  <!-- Formulario -->
+  @if (!carregant() && !error()) {
+    <section class="container my-4 bg-dark w-md-50 rounded-4 py-5 px-4 shadow w-50">
+      <h3 class="mb-4 text-info text-center">Añadir tarea</h3>
 
-        <form (submit)="crearTasca()">
-            <div class="mb-3">
-                <label for="titulo" class="form-label">Título</label>
-                <input type="text" id="titulo" class="form-control" [(ngModel)]="titol" name="titol" required>
-            </div>
+      <form (submit)="crearTasca()" class="needs-validation" novalidate>
+        <!-- Título -->
+        <div class="mb-3">
+          <label for="titulo" class="form-label text-info fw-semibold">Título</label>
+          <input 
+            type="text" 
+            id="titulo" 
+            class="form-control bg-secondary text-black border-0 rounded-3 shadow-sm" 
+            [(ngModel)]="titol" 
+            name="titol" 
+            required
+            placeholder="Escribe el título de la tarea"
+          >
+        </div>
 
-            <div class="mb-3">
-                <label for="contenido" class="form-label">Descripción</label>
-                <textarea id="contenido" class="form-control" rows="4" [(ngModel)]="descripcio" name="descripcio" required> </textarea>
-            </div>
+        <!-- Descripción -->
+        <div class="mb-5">
+          <label for="contenido" class="form-label text-info fw-semibold">Descripción</label>
+          <textarea 
+            id="contenido" 
+            class="form-control bg-secondary text-black border-0 rounded-3 shadow-sm" 
+            rows="4" 
+            [(ngModel)]="descripcio" 
+            name="descripcio" 
+            required
+            placeholder="Describe la tarea"
+          ></textarea>
+        </div>
 
-            <button type="submit" class="btn btn-primary">Añadir tarea</button>
-        </form>
+        <!-- Botón -->
+        <div class="d-flex justify-content-center">
+          <button 
+            type="submit" 
+            class="btn btn-info btn-lg px-5 rounded-pill shadow-sm"
+          >
+            ➕ Añadir tarea
+          </button>
+        </div>
+      </form>
     </section>
-    }
+  }
 </div>

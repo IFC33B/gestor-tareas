@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { TascaService } from '../../services/tasca.service';
 import { TascaRequest } from '../../models';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formulari-tasques',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './formulari-tasques.html',
   styleUrl: './formulari-tasques.scss',
 })
@@ -31,10 +32,15 @@ export class FormulariTasques {
         this.carregant.set(false)
       },
 
-      error: (err) {
+      error: (err) => {
         this.error.set(err);
         console.log(err);
       }
     })
+  }
+
+  // Recargar página
+  reload() {
+    window.location.reload()
   }
 }
