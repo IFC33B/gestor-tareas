@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Llista de Tasques</h1>
+
+  <!-- Formulario para añadir tareas -->
+  <div class="form-container">
+    <h2>Afegir Nova Tasca</h2>
+    <form (ngSubmit)="afegirTasca()">
+      <div class="form-group">
+        <label for="titol">Títol:</label>
+        <input
+          type="text"
+          id="titol"
+          [(ngModel)]="novaTasca.titol"
+          name="titol"
+          placeholder="Títol de la tasca"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcio">Descripció:</label>
+        <textarea
+          id="descripcio"
+          [(ngModel)]="novaTasca.descripcio"
+          name="descripcio"
+          placeholder="Descripció de la tasca"
+          rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn-add">Afegir Tasca</button>
+    </form>
+  </div>
+
+  <!-- Lista de tareas -->
+  <div class="tasques-list">
+    <h2>Les Meves Tasques</h2>
+
+    <div *ngIf="tasques.length === 0" class="no-tasques">
+      No hi ha tasques. Afegeix la teva primera tasca!
+    </div>
+
+    <div *ngFor="let tasca of tasques" class="tasca-item" [class.completada]="tasca.feta">
+      <div class="tasca-checkbox">
+        <input
+          type="checkbox"
+          [checked]="tasca.feta"
+          (change)="tasca.feta = !tasca.feta; canviarEstat(tasca)">
+      </div>
+
+      <div class="tasca-info">
+        <h3>{{ tasca.titol }}</h3>
+        <p>{{ tasca.descripcio }}</p>
+      </div>
+
+      <button (click)="eliminarTasca(tasca.id)" class="btn-delete">Eliminar</button>
+    </div>
+  </div>
+</div>
