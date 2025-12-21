@@ -1,1 +1,30 @@
-<p>llista-tasques works!</p>
+<div class="container">
+  <h2>Llistat de tasques</h2>
+
+  <!-- Indicador de càrrega -->
+  @if (carregant()) {
+  <div class="loading">
+    <p>Carregant tasques...</p>
+  </div>
+  }
+
+  <!-- Missatge d'error -->
+  @if (error()) {
+  <div class="error">
+    <p>{{ error() }}</p>
+    <button (click)="carregarTasques()">Tornar a provar</button>
+  </div>
+  }
+
+  <!-- Llista tasques -->
+  @if (!carregant() && !error()) {
+  <div class="tasca-container">
+    @for (tasca of tasques(); track tasca.id) {
+    <div class="tasca-card">
+      <h3>{{ tasca.titol }}</h3>
+      <p>{{ tasca.descripcio }}</p>
+    </div>
+    }
+  </div>
+  }
+</div>
