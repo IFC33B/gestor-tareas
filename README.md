@@ -4,12 +4,12 @@ Tarea 1 de las prácticas de APIs en entorno **cliente** & **servidor**.
 
 ## Endpoints
 
-| Method     | Endpoint        | Description                                           | Respuestas                                                                    |
-| ---------- | --------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **GET**    | /api/tasques    | Mostrar todas las tareas                              | **200** -> Ok, tareas disponibles<br>**204** -> Ok, sin tareas disponibles    |
-| **POST**   | /api/tasca/{id} | Crear tarea con `{id}` usando los datos del body      | **201** -> Ok, tarea creada                                                   |
-| **PUT**    | /api/tasca/{id} | Actualizar tarea con `{id}` usando los datos del body | **201** -> Ok, tarea actualizada<br>**404** -> Tarea con `{id}` no encontrada |
-| **DELETE** | /api/tasca/{id} | Eliminar tarea con `{id}`                             | **204** -> Ok, tarea eliminada<br>**404** -> Tarea con `{id}` no encontrada   |
+| Method     | Endpoint          | Description                                           | Respuestas                                                                    |
+| ---------- | ----------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **GET**    | /api/tasques      | Mostrar todas las tareas                              | **200** -> Ok, tareas disponibles<br>**204** -> Ok, sin tareas disponibles    |
+| **POST**   | /api/tasques/{id} | Crear tarea con `{id}` usando los datos del body      | **201** -> Ok, tarea creada                                                   |
+| **PUT**    | /api/tasques/{id} | Actualizar tarea con `{id}` usando los datos del body | **201** -> Ok, tarea actualizada<br>**404** -> Tarea con `{id}` no encontrada |
+| **DELETE** | /api/tasques/{id} | Eliminar tarea con `{id}`                             | **204** -> Ok, tarea eliminada<br>**404** -> Tarea con `{id}` no encontrada   |
 
 ## Comandos de prueba Windows
 
