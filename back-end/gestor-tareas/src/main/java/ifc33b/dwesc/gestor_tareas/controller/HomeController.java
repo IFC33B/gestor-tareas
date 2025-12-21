@@ -27,12 +27,6 @@ public class HomeController {
     @Autowired
     private TascaService tascaService;
 
-    // Testing route
-    @GetMapping("/test")
-    public String getApiTest() {
-        return new Tasca("test", "test").toString();
-    }
-
     @GetMapping("/tasques") // Devolver todas las tareas
     public ResponseEntity<List<TascaResponse>> getApiTasques() {
         // Service Logic
