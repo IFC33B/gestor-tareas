@@ -1,1 +1,24 @@
-<p>formulari-tasca works!</p>
+<div class="container">
+  <h2>Formulari de Tasca</h2>
+
+  <!-- <button (click)="carregarTasques()">Tornar a provar</button> -->
+
+  <!-- Llista tasques -->
+  <form #formulariTasca="ngForm" (ngSubmit)="crearTasca(formulariTasca)">
+    <label> Titol: </label>
+    <input type="text" name="titol" [(ngModel)]="titol" placeholder="Estodiar Xarxes" />
+
+    <label> Descripció: </label>
+    <input
+      type="text"
+      name="descripcio"
+      [(ngModel)]="descripcio"
+      placeholder="Estodiar per al examen de xarxes"
+    />
+
+    <button type="submit">Submit</button>
+  </form>
+  @if (submitted()) {
+  <p>Enviat!</p>
+  }
+</div>

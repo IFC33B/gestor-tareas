@@ -4,7 +4,7 @@ import { LlistaTasques } from '../llista-tasques/llista-tasques';
 
 @Component({
   selector: 'app-home-page',
-  imports: [LlistaTasques],
+  imports: [FormulariTasca, LlistaTasques],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

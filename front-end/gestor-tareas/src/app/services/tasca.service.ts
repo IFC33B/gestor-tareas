@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, Subject, throwError } from 'rxjs';
 import { Tasca } from '../models/tasca.model';
 
 @Injectable({
@@ -8,6 +8,10 @@ import { Tasca } from '../models/tasca.model';
 })
 export class TascaService {
   private apiUrl = 'http://localhost:8080/api/tasques';
+
+  // Variables per notificar de una nova tasca
+  private tascaCreadaSource = new Subject<void>();
+  tascaCreada$ = this.tascaCreadaSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +22,7 @@ export class TascaService {
 
   // Subir una tarea
   postTasques(tasca: Omit<Tasca, 'id'>): Observable<Tasca> {
+    console.log('DEBUG: Before post');
     return this.http.post<Tasca>(this.apiUrl, tasca).pipe(catchError(this.handleError));
   }
 
@@ -31,6 +36,11 @@ export class TascaService {
   // Eliminar una tarea
   deleteTasques(id: number): Observable<Tasca> {
     return this.http.delete<Tasca>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
+  }
+
+  // Notificar de tasca creada al frontend
+  notificarTascaCreada() {
+    this.tascaCreadaSource.next();
   }
 
   // Error handler
