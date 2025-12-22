@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ifc33b.dwesc.gestor_tareas.dto.TascaRequest;
 import ifc33b.dwesc.gestor_tareas.dto.TascaResponse;
-import ifc33b.dwesc.gestor_tareas.model.Tasca;
 import ifc33b.dwesc.gestor_tareas.service.TascaService;
 
 // @Autowired()
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class HomeController {
@@ -28,7 +28,6 @@ public class HomeController {
     @Autowired
     private TascaService tascaService;
 
-    @CrossOrigin
     @GetMapping("/tasques") // Devolver todas las tareas
     public ResponseEntity<List<TascaResponse>> getApiTasques() {
         // Service Logic
