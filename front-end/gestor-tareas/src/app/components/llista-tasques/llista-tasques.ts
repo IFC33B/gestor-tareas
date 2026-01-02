@@ -47,4 +47,22 @@ export class LlistaTasques implements OnInit {
       },
     });
   }
+
+  actualitzarFeta(tasca: Tasca): void {
+    const tascaActualitzada: Tasca = {
+      ...tasca,
+      feta: !tasca.feta,
+    };
+
+    this.tascaService.putTasques(tascaActualitzada).subscribe({
+      next: (tascaBackend) => {
+        this.tasques.update((llista) =>
+          llista.map((tasca) => (tasca.id === tascaBackend.id ? tascaBackend : tasca))
+        );
+      },
+      error: (err) => {
+        console.error('Error actualitzant la tasca: ', err);
+      },
+    });
+  }
 }

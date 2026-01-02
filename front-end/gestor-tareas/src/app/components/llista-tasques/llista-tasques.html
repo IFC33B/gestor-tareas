@@ -23,6 +23,11 @@
     <div class="tasca-card">
       <h3>{{ tasca.titol }}</h3>
       <p>{{ tasca.descripcio }}</p>
+      <div>
+        <label for="feta">Tasca completada</label>
+
+        <input type="checkbox" [checked]="tasca.feta" (change)="actualitzarFeta(tasca)" />
+      </div>
     </div>
     }
   </div>
