@@ -27,5 +27,33 @@ export class LlistaTasques {
       }
     })
   }
+  ferTasca(tasca:Tasca, checked:boolean):void {
+    if (checked) {
+      tasca.feta = true;
+    }
+    else {
+      tasca.feta = false;
+    }
+    this.tascaService.updateTasca(tasca).subscribe({
+      next:(data)=> {
+        this.tasques.update(llista=>
+          llista.map(t=>
+            t.id == tasca.id ? t = data : t
+          )
+        )
+      }
+    });
+  }
+  borrarTasca(id:number) {
+    this.tascaService.deleteTasca(id).subscribe({
+      next:(data)=> {
+        this.tasques.update(llista=>
+          llista.filter(t=>
+            t.id != id
+          )
+        )
+      }
+    })
+  }
 
 }
