@@ -25,7 +25,7 @@ export class TascaService {
     return this.http.put<Tasca>(`${this.apiUrl}/${tasca.id}`, tasca);
   }
 
-  deleteTasca(tasca:Tasca):Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${tasca.id}`);
+  deleteTasca(id:number):Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
