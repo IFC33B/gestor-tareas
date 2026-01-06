@@ -1,5 +1,13 @@
 @for (tasca of tasques(); track tasca.id) {
     <h1>{{tasca.titol}}</h1>
     <p>{{tasca.descripcio}}</p>
-    <p>{{tasca.feta}}</p>
+    <p>@if (tasca.feta) {
+        Feta
+    } @else {
+        No feta
+    }
+    </p>
+    <label for="feta">Marcar como hecha</label>
+    <input type="checkbox" name="feta" [checked]="tasca.feta" (change)="ferTasca(tasca, $event.target.checked)">
+    <button (click)="borrarTasca(tasca.id)">Eliminar</button>
 }
