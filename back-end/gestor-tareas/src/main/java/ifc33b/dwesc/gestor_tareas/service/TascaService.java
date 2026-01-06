@@ -25,4 +25,43 @@ public class TascaService {
         return repository.findAll();
     }
 
+    // método crear tasca
+    public Tasca saveTasca(Tasca tasca) {
+        // instanciar nueva tarea
+        Tasca tascaNew = new Tasca(tasca.getTitol(), tasca.getDescripcio());
+
+        // guardar tarea
+        return repository.save(tascaNew);
+    }
+
+    // método actualizar tarea
+    public Tasca updateTasca(Tasca tasca, Long id) {
+
+        // buscar tarea por ID
+        Tasca tascaEncontrado = repository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("No se ha encontrado la tarea con id: " + id)
+                );
+
+        // actualizar datos
+        tascaEncontrado.setTitol(tasca.getTitol());
+        tascaEncontrado.setDescripcio(tasca.getDescripcio());
+        tascaEncontrado.setFeta(tasca.isFeta());
+
+        // guardar tarea
+        return repository.save(tascaEncontrado);
+    }
+
+    // método eliminar tarea
+    public void deleteTasca(Long id) {
+        // comprobar si tarea existe
+        repository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("No se ha encontrado la tarea con id: " + id)
+                );
+
+        // eliminar tarea
+        repository.deleteById(id);
+    }
+
 }
