@@ -21,7 +21,7 @@ export class LlistaTasques {
   cargarTasques():void {
     this.cargando.set(true);
     this.tascaService.getTasques().subscribe({
-      next:(data)=>{
+      next:(data)=> {
         this.tasques.set(data);
         this.cargando.set(false);
       }
