@@ -9,34 +9,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+import ifc33b.dwesc.gestor_tareas.model.Tasca;
+import ifc33b.dwesc.gestor_tareas.service.TascaService;
+
 @RestController
 @RequestMapping("/api/tasques")
 public class HomeController {
 
+    private final TascaService tascaService;
+
+    public HomeController(TascaService tascaService) {
+        this.tascaService = tascaService;
+    }
+
     // GET /api/tasques
     // devuelve lista de tareas
     @GetMapping
-    public int getAll() {
-        return 0;
+    public List<Tasca> getAll() {
+        // devolver todas las tareas
+        return tascaService.findAll();
     }
 
     // POST /api/tasques
     // añade tarea
     @PostMapping
-    public int createTasca() {
-        return 0;
+    public Tasca saveTasca(@RequestBody Tasca tasca) {
+        // crear tarea
+        return tascaService.saveTasca(tasca);
     }
 
     // PUT /api/tasques/{id}
     // acutailizar tarea
     @PutMapping("/{id}")
-    public int updateTasca() {
-        return 0;
+    public Tasca updateTasca(@RequestBody Tasca tasca, @PathVariable Long id) {
+        return tascaService.updateTasca(tasca, id);
     }
 
     // DELETE /api/tasques/{id}
     @DeleteMapping("/{id}")
-    public int deleteTasca() {
-        return 0;
+    public void deleteTasca(@PathVariable Long id) {
+        // eliminar tarea
+        tascaService.deleteTasca(id);
     }
 }
