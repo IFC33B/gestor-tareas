@@ -1,3 +1,13 @@
+
+<h2>Crear tarea</h2>
+
+<form (ngSubmit)="crearTasca()">
+  <input [(ngModel)]="novaTasca.titol" name="titol" placeholder="Título" required>
+  <input [(ngModel)]="novaTasca.descripcio" name="descripcio" placeholder="Descripción" required>
+  <button type="submit">Guardar</button>
+</form>
+
+
 <h2>Lista de tareas</h2>
 
 <ul>
