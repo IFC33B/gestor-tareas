@@ -53,4 +53,20 @@ export class Tasques implements OnInit {
       error: err => console.error('Error eliminando tarea', err)
     });
   }
+
+  actualizarTasca(tasca: Tasca): void {
+
+    // tarea actualizada
+    const tascaActualizada: Tasca = {
+      ...tasca,
+      feta: !tasca.feta
+    };
+
+    // envia tarea acualizada
+    this.tascaService.updateTasca(tasca.id!, tascaActualizada).subscribe({
+      next: () => this.cargarTasques(),
+      error: err => console.error('Error actualizando tarea', err)
+    });
+  }
+
 }

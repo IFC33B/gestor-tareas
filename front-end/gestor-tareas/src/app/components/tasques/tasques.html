@@ -12,6 +12,8 @@
 
 <ul>
   <li *ngFor="let tasca of tasques">
+    <input type="checkbox" [checked]="tasca.feta" (change)="actualizarTasca(tasca)"/>
+
     {{ tasca.titol }} - {{ tasca.descripcio }}
 
     <button (click)="eliminarTasca(tasca.id!)">Eliminar</button>
