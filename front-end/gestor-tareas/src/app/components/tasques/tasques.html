@@ -1,1 +1,7 @@
-<p>tasques works!</p>
+<h2>Lista de tareas</h2>
+
+<ul>
+  <li *ngFor="let tasca of tasques">
+    {{ tasca.titol }} - {{ tasca.descripcio }}
+  </li>
+</ul>
