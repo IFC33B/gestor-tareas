@@ -46,4 +46,11 @@ export class Tasques implements OnInit {
       error: err => console.error('Error creando tarea', err)
     });
   }
+
+  eliminarTasca(id: number): void {
+    this.tascaService.delete(id).subscribe({
+      next: () => this.cargarTasques(),
+      error: err => console.error('Error eliminando tarea', err)
+    });
+  }
 }

@@ -13,5 +13,8 @@
 <ul>
   <li *ngFor="let tasca of tasques">
     {{ tasca.titol }} - {{ tasca.descripcio }}
+
+    <button (click)="eliminarTasca(tasca.id!)">Eliminar</button>
+
   </li>
 </ul>
