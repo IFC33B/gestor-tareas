@@ -1,9 +1,4 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
-export interface TascaModel {
+export interface Tasca {
   id?: number; // opcional
   titol: string;
   descripcio: string;
