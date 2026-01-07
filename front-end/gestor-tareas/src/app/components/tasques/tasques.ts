@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TascaService } from '../../services/tasca.service';
+import { Tasca } from '../../models/tasca.model';
 
 @Component({
   selector: 'app-tasques',
@@ -6,6 +8,19 @@ import { Component } from '@angular/core';
   templateUrl: './tasques.html',
   styleUrl: './tasques.scss',
 })
-export class Tasques {
+export class Tasques implements OnInit {
+  tasques: Tasca[] = [];
 
+  constructor(private tascaService: TascaService) {}
+
+  ngOnInit(): void {
+    this.CargarTasques();
+  }
+
+  CargarTasques(): void {
+    this.tascaService.getTasques().subscribe({
+      next: (data) => this.tasques = data,
+      error: (err) => console.error('Error cargando tareas', err)
+    });
+  }
 }
